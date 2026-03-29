@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "nombre": "Llanta Michelin Pilot Road 4",
+    "tipo": "Llantas",
+    "precio": 1800.00
+  },
+  {
+    "id": "2",
+    "nombre": "Aceite Sintetico Motul 7100 10W40",
+    "tipo": "Mantenimiento",
+    "precio": 350.50
+  },
+  {
+    "id": "3",
+    "nombre": "Faro Principal LED Universal 7 Pulgadas",
+    "tipo": "Iluminacion",
+    "precio": 850.00
+  },
+  {
+    "id": "4",
+    "nombre": "Llanta Pirelli Angel GT",
+    "tipo": "Llantas",
+    "precio": 2100.00
+  }
+]

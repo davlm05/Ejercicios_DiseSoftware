@@ -1,0 +1,20 @@
+{
+  "name": "mimoto-mipasion-api",
+  "version": "1.0.0",
+  "description": "API serverless de intercambio de partes de motos para Mi Moto Mi Pasion",
+  "main": "serverless.yml",
+  "scripts": {
+    "start": "serverless offline start",
+    "install-db": "serverless dynamodb install",
+    "deploy": "serverless deploy"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1600.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "serverless": "^3.39.0",
+    "serverless-dynamodb": "^0.2.53",
+    "serverless-offline": "^13.3.3"
+  }
+}

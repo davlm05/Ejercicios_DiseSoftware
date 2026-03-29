@@ -1,0 +1,79 @@
+service: mimoto-mipasion-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    PARTES_TABLE: ${self:custom.partesTable}
+    IS_OFFLINE: "true"
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.partesTable}"
+
+custom:
+  partesTable: 'partes-table-${sls:stage}'
+  serverless-dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    seed:
+      domain:
+        sources:
+          - table: ${self:custom.partesTable}
+            sources: [./seed.json]
+
+plugins:
+  - serverless-dynamodb
+  - serverless-offline
+
+functions:
+  createParte:
+    handler: src/handlers/createParte.handler
+    events:
+      - http:
+          path: /partes
+          method: post
+          cors: true
+  getPartes:
+    handler: src/handlers/getPartes.handler
+    events:
+      - http:
+          path: /partes
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    PartesTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.partesTable}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: tipo
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: TipoIndex
+            KeySchema:
+              - AttributeName: tipo
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        BillingMode: PAY_PER_REQUEST

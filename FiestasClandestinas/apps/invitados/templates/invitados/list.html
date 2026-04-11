@@ -1,0 +1,33 @@
+{% extends "invitados/base.html" %}
+
+{% block content %}
+    {% if invitados %}
+        {% for invitado in invitados %}
+            <article class="card">
+                <div class="fiesta-title">{{ invitado.fiesta.nombre }}</div>
+                <div class="meta">
+                    <span><strong>Ubicación:</strong> {{ invitado.fiesta.ubicacion_texto }}</span>
+                    <span><strong>Fecha:</strong> {{ invitado.fiesta.fecha|date:"d/m/Y H:i" }}</span>
+                    <span><strong>Host:</strong> {{ invitado.fiesta.host }}</span>
+                    <span><strong>Capacidad:</strong> {{ invitado.fiesta.capacidad_max }} personas</span>
+                </div>
+                <div class="invitee">Invitación para <strong>{{ invitado.nombre }}</strong></div>
+                <div class="actions">
+                    <form method="post" action="{% url 'invitados:aceptar' invitado.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-accept">Aceptar</button>
+                    </form>
+                    <form method="post" action="{% url 'invitados:rechazar' invitado.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-reject">Rechazar</button>
+                    </form>
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <div class="empty">
+            <h2>Sin invitaciones pendientes</h2>
+            <p>Cuando recibas una nueva invitación aparecerá aquí.</p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Local apps
     "fiestas_core",
+    "apps.api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [

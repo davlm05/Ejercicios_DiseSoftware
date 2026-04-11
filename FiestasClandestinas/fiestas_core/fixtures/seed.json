@@ -1,0 +1,117 @@
+[
+  {
+    "model": "fiestas_core.fiesta",
+    "pk": 1,
+    "fields": {
+      "nombre": "Rave en Finca La Neblina",
+      "descripcion": "Open air techno con sonido en la montaña.",
+      "ubicacion_texto": "Finca La Neblina, Cartago",
+      "latitud": 9.8644,
+      "longitud": -83.9194,
+      "capacidad_max": 80,
+      "fecha": "2026-06-14T22:00:00Z",
+      "host": "DJ Volcán",
+      "created_at": "2026-04-11T10:00:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.fiesta",
+    "pk": 2,
+    "fields": {
+      "nombre": "Casa Abandonada — noche deep house",
+      "descripcion": "Sesión íntima en casa vieja del centro.",
+      "ubicacion_texto": "Barrio Amón, San José",
+      "latitud": 9.9361,
+      "longitud": -84.0784,
+      "capacidad_max": 30,
+      "fecha": "2026-05-02T23:30:00Z",
+      "host": "Colectivo Subsuelo",
+      "created_at": "2026-04-11T10:05:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.fiesta",
+    "pk": 3,
+    "fields": {
+      "nombre": "Bodega del Puerto",
+      "descripcion": "Drum and bass en bodega junto al mar.",
+      "ubicacion_texto": "Zona portuaria, Puntarenas",
+      "latitud": 9.9763,
+      "longitud": -84.8384,
+      "capacidad_max": 120,
+      "fecha": "2026-07-20T21:00:00Z",
+      "host": "Low End Crew",
+      "created_at": "2026-04-11T10:10:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.fiesta",
+    "pk": 4,
+    "fields": {
+      "nombre": "Finca del Lago",
+      "descripcion": "Sunset party con vista al Arenal.",
+      "ubicacion_texto": "La Fortuna, Alajuela",
+      "latitud": 10.4721,
+      "longitud": -84.6441,
+      "capacidad_max": 50,
+      "fecha": "2026-08-09T17:00:00Z",
+      "host": "Luna Colectivo",
+      "created_at": "2026-04-11T10:15:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.invitado",
+    "pk": 1,
+    "fields": {
+      "fiesta": 1,
+      "nombre": "Ana Rojas",
+      "contacto": "ana@example.com",
+      "estado": "pending",
+      "created_at": "2026-04-11T11:00:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.invitado",
+    "pk": 2,
+    "fields": {
+      "fiesta": 1,
+      "nombre": "Bruno Vega",
+      "contacto": "bruno@example.com",
+      "estado": "accepted",
+      "created_at": "2026-04-11T11:05:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.invitado",
+    "pk": 3,
+    "fields": {
+      "fiesta": 2,
+      "nombre": "Carla Mora",
+      "contacto": "carla@example.com",
+      "estado": "pending",
+      "created_at": "2026-04-11T11:10:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.invitado",
+    "pk": 4,
+    "fields": {
+      "fiesta": 3,
+      "nombre": "Diego Alfaro",
+      "contacto": "diego@example.com",
+      "estado": "pending",
+      "created_at": "2026-04-11T11:15:00Z"
+    }
+  },
+  {
+    "model": "fiestas_core.invitado",
+    "pk": 5,
+    "fields": {
+      "fiesta": 4,
+      "nombre": "Elena Soto",
+      "contacto": "elena@example.com",
+      "estado": "declined",
+      "created_at": "2026-04-11T11:20:00Z"
+    }
+  }
+]

@@ -28,3 +28,6 @@ media/
 # Env files
 .env
 .env.local
+
+# Claude Code local harness settings (not related to the academic agents in AGENTS.md)
+.claude/

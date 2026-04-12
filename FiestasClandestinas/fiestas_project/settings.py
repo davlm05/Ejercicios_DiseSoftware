@@ -52,7 +52,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "fiestas_project.urls"
+_BUNDLE_URL_MAP = {
+    "api": "fiestas_project.urls_api",
+    "invitados": "fiestas_project.urls_invitados",
+    "localizacion": "fiestas_project.urls_localizacion",
+}
+ROOT_URLCONF = _BUNDLE_URL_MAP.get(BUNDLE, "fiestas_project.urls")
 
 TEMPLATES = [
     {

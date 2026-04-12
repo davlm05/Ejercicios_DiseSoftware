@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "fiestas_core",
     "apps.api.apps.ApiConfig",
     "apps.invitados.apps.InvitadosConfig",
+    "apps.localizacion.apps.LocalizacionConfig",
 ]
 
 MIDDLEWARE = [

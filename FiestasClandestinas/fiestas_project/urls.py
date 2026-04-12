@@ -34,5 +34,6 @@ urlpatterns = [
     path("", index, name="index"),
     path("api/", include("apps.api.urls")),
     path("invitados/", include("apps.invitados.urls")),
+    path("localizacion/", include("apps.localizacion.urls")),
     path("admin/", admin.site.urls),
 ]

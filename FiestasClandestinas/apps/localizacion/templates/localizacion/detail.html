@@ -1,0 +1,41 @@
+{% extends "localizacion/base.html" %}
+{% load l10n %}
+
+{% block header %}{{ fiesta.nombre }}{% endblock %}
+
+{% block content %}
+    <section class="panel">
+        <div class="panel-title">{{ fiesta.nombre }}</div>
+        <dl class="panel-meta">
+            <dt>location</dt>
+            <dd>{{ fiesta.ubicacion_texto }}</dd>
+            <dt>host</dt>
+            <dd>{{ fiesta.host }}</dd>
+            <dt>date</dt>
+            <dd>{{ fiesta.fecha|date:"Y-m-d · H:i" }}</dd>
+            <dt>latitud</dt>
+            <dd><span class="coords">{% localize off %}{{ fiesta.latitud }}{% endlocalize %}</span></dd>
+            <dt>longitud</dt>
+            <dd><span class="coords">{% localize off %}{{ fiesta.longitud }}{% endlocalize %}</span></dd>
+            <dt>capacidad</dt>
+            <dd>{{ fiesta.capacidad_max }} personas</dd>
+        </dl>
+
+        {% if fiesta.descripcion %}
+            <p style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.7;">{{ fiesta.descripcion }}</p>
+        {% endif %}
+
+        {% if cupos_disponibles == 0 %}
+            <span class="cupos full" style="margin-top: 1rem;">full · 0 cupos</span>
+        {% elif cupos_disponibles <= 5 %}
+            <span class="cupos low" style="margin-top: 1rem;">{{ cupos_disponibles }} cupos restantes</span>
+        {% else %}
+            <span class="cupos" style="margin-top: 1rem;">{{ cupos_disponibles }} cupos disponibles</span>
+        {% endif %}
+
+        <div class="actions">
+            {% localize off %}<a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat={{ fiesta.latitud }}&mlon={{ fiesta.longitud }}#map=16/{{ fiesta.latitud }}/{{ fiesta.longitud }}">[ open in openstreetmap ]</a>{% endlocalize %}
+            <a class="btn" href="{% url 'localizacion:listar' %}">[ back ]</a>
+        </div>
+    </section>
+{% endblock %}

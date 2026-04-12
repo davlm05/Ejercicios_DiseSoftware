@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Localización — Fiestas Clandestinas{% endblock %}</title>
+    <style>
+        :root {
+            --bg: #050a08;
+            --bg-grid: #0b1612;
+            --panel: #0d1814;
+            --panel-border: #1f3a2e;
+            --accent: #00ff9c;
+            --accent-dim: #00b371;
+            --text: #d7f5e3;
+            --muted: #6a8a7a;
+            --warn: #ffc857;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { min-height: 100%; }
+        body {
+            font-family: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+            background: var(--bg);
+            background-image:
+                linear-gradient(rgba(0, 255, 156, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 156, 0.035) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: var(--text);
+            padding: 2rem 1.5rem;
+            line-height: 1.55;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            border: 1px solid var(--panel-border);
+            background: var(--panel);
+            padding: 1.4rem 1.8rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .brand {
+            font-size: 0.85rem;
+            color: var(--muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 1.6rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        h1::before { content: "> "; color: var(--accent-dim); }
+        .nav a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-dim);
+            font-size: 0.9rem;
+        }
+        .nav a:hover { color: var(--text); }
+
+        .panel {
+            border: 1px solid var(--panel-border);
+            background: var(--panel);
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            position: relative;
+        }
+        .panel::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent);
+        }
+        .panel-title {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+        }
+        .panel-meta {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 0.4rem 1.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.88rem;
+        }
+        .panel-meta dt { color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .panel-meta dd { color: var(--text); }
+
+        .coords {
+            display: inline-block;
+            background: var(--bg-grid);
+            border: 1px solid var(--panel-border);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+        .cupos {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.3rem 0.7rem;
+            border: 1px solid var(--accent-dim);
+            color: var(--accent);
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+        .cupos.low { color: var(--warn); border-color: var(--warn); }
+        .cupos.full { color: #ff6b6b; border-color: #ff6b6b; }
+
+        .actions { margin-top: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent-dim);
+            border-radius: 3px;
+            text-decoration: none;
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: background 0.15s;
+        }
+        .btn:hover { background: rgba(0, 255, 156, 0.1); }
+        .btn-primary { border-color: var(--accent); }
+
+        .empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--muted);
+            border: 1px dashed var(--panel-border);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <div class="brand">fiestas-clandestinas // geo-map</div>
+                <h1>{% block header %}Localización{% endblock %}</h1>
+            </div>
+            <nav class="nav">
+                <a href="{% url 'localizacion:listar' %}">[ all ]</a>
+            </nav>
+        </header>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
